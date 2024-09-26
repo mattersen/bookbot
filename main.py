@@ -9,11 +9,11 @@ def main():
 
     print_report(alpha_only_dict, book_path, word_count)
 
-def get_book_text(path):    
+def get_book_text(path: str):    
     with open(path) as f:
         return f.read()
 
-def count_chars(text):
+def count_chars(text: str):
     char_dict = {}
     for char in text.lower():
         if char in char_dict:
@@ -22,18 +22,18 @@ def count_chars(text):
             char_dict[char] = 1 
     return char_dict
 
-def count_words(text):
+def count_words(text: str) -> int:
     words = text.split()
     count = len(words)
     return count
 
-def dict_to_list(dict):
+def dict_to_list(dict) -> list[dict]:
     list = []
     for char in dict:
         list.append({"char" : char, "num": dict[char]})
     return list
 
-def alpha_dict(list_of_dict):
+def alpha_dict(list_of_dict: list[dict]):
     alpha_dict = {}
     for dict in list_of_dict:
         if dict["char"].isalpha():
