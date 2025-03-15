@@ -1,3 +1,5 @@
+from stats import count_words
+
 def main():
     book_path = "books/frankenstein.txt"
     text = get_book_text(book_path)
@@ -22,11 +24,6 @@ def count_chars(text: str):
             char_dict[char] = 1 
     return char_dict
 
-def count_words(text: str) -> int:
-    words = text.split()
-    count = len(words)
-    return count
-
 def dict_to_list(dict) -> list[dict]:
     list = []
     for char in dict:
@@ -45,7 +42,7 @@ def sort_on(dict):
 
 def print_report(alpha_sorted_dictionary: dict[str, int], book_path: str, word_count: int):
     print(f"--- Begin report of {book_path} ---")
-    print(f"There are {word_count} words in this book.")
+    print(f"{word_count} words found in the document.")
     print("")
     for char, num in alpha_sorted_dictionary.items():
         print(f"The '{char}' character was found {num} times")
