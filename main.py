@@ -1,7 +1,13 @@
+import sys
 from stats import count_words
 
 def main():
-    book_path = "books/frankenstein.txt"
+
+    if len(sys.argv) != 2:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+    book_path = sys.argv[1]
     text = get_book_text(book_path)
     word_count = count_words(text)
     char_count_dict = count_chars(text)
@@ -45,7 +51,7 @@ def print_report(alpha_sorted_dictionary: dict[str, int], book_path: str, word_c
     print(f"{word_count} words found in the document.")
     print("")
     for char, num in alpha_sorted_dictionary.items():
-        print(f"The '{char}' character was found {num} times")
+        print(f"{char}: {num}")
     print("--- End Report ---")
 
 main()
